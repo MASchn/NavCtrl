@@ -12,7 +12,10 @@
 @interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSArray *companyList;
+@property (nonatomic, retain) NSMutableArray *companyList;
 @property (nonatomic, retain) ProductVC *productViewController;
-
+@property (nonatomic, retain) NSMutableArray *appleProducts;
+@property (nonatomic, retain) NSMutableArray *samsungProducts;
+@property (nonatomic, retain) NSMutableArray *googleProducts;
+@property (nonatomic, retain) NSMutableArray *microsoftProducts;
 @end
