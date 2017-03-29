@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Company.h"
 
 @interface ProductVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *products;
+@property (nonatomic, retain) Company *selectedCompany;
 
 @end

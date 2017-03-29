@@ -20,6 +20,7 @@
 		48A656D818163BF200746D36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48A656D618163BF200746D36 /* InfoPlist.strings */; };
 		48A656DA18163BF200746D36 /* NavCtrlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A656D918163BF200746D36 /* NavCtrlTests.m */; };
 		48A656EE1816468000746D36 /* Sunflower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 48A656ED1816468000746D36 /* Sunflower.gif */; };
+		8410EC361E8C0C2000C11508 /* DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8410EC351E8C0C2000C11508 /* DAO.m */; };
 		841F39C91E82E4F600F0FB0E /* ProductWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 841F39C71E82E4F600F0FB0E /* ProductWebVC.m */; };
 		84227B7D1E857EA80082466D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84227B7C1E857EA80082466D /* WebKit.framework */; };
 		84607D931E842C8A00AD6148 /* microsoft.png in Resources */ = {isa = PBXBuildFile; fileRef = 84607D8F1E842C8A00AD6148 /* microsoft.png */; };
@@ -38,6 +39,8 @@
 		84607DAD1E843D5F00AD6148 /* xps.png in Resources */ = {isa = PBXBuildFile; fileRef = 84607DAA1E843D5F00AD6148 /* xps.png */; };
 		84607DAE1E843D5F00AD6148 /* lumia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84607DAB1E843D5F00AD6148 /* lumia.jpg */; };
 		84607DAF1E843D5F00AD6148 /* surfacePro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84607DAC1E843D5F00AD6148 /* surfacePro.jpg */; };
+		84A7A84F1E8AC17E008F25E3 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A84E1E8AC17E008F25E3 /* Company.m */; };
+		84A7A8521E8AC1CC008F25E3 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A8511E8AC1CC008F25E3 /* Product.m */; };
 		9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */; };
 		9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */; };
 		9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF241E4A33F1002D55B8 /* ProductVC.m */; };
@@ -73,6 +76,8 @@
 		48A656D718163BF200746D36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		48A656D918163BF200746D36 /* NavCtrlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavCtrlTests.m; sourceTree = "<group>"; };
 		48A656ED1816468000746D36 /* Sunflower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Sunflower.gif; sourceTree = "<group>"; };
+		8410EC341E8C0C2000C11508 /* DAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAO.h; sourceTree = "<group>"; };
+		8410EC351E8C0C2000C11508 /* DAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAO.m; sourceTree = "<group>"; };
 		841F39C61E82E4F600F0FB0E /* ProductWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductWebVC.h; sourceTree = "<group>"; };
 		841F39C71E82E4F600F0FB0E /* ProductWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductWebVC.m; sourceTree = "<group>"; };
 		84227B7C1E857EA80082466D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -92,6 +97,10 @@
 		84607DAA1E843D5F00AD6148 /* xps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xps.png; sourceTree = "<group>"; };
 		84607DAB1E843D5F00AD6148 /* lumia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lumia.jpg; sourceTree = "<group>"; };
 		84607DAC1E843D5F00AD6148 /* surfacePro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = surfacePro.jpg; sourceTree = "<group>"; };
+		84A7A84D1E8AC17E008F25E3 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		84A7A84E1E8AC17E008F25E3 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		84A7A8501E8AC1CC008F25E3 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = ../Product.h; sourceTree = "<group>"; };
+		84A7A8511E8AC1CC008F25E3 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = ../Product.m; sourceTree = "<group>"; };
 		9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyVC.h; sourceTree = "<group>"; };
 		9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyVC.m; sourceTree = "<group>"; };
 		9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyVC.xib; sourceTree = "<group>"; };
@@ -138,6 +147,8 @@
 		483796CC1BCBF7C70062D5AB /* ParentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				84A7A84D1E8AC17E008F25E3 /* Company.h */,
+				84A7A84E1E8AC17E008F25E3 /* Company.m */,
 				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
 				9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */,
 				9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */,
@@ -148,8 +159,12 @@
 		483796CD1BCBF7EB0062D5AB /* ProductViewController */ = {
 			isa = PBXGroup;
 			children = (
+				84A7A8501E8AC1CC008F25E3 /* Product.h */,
+				84A7A8511E8AC1CC008F25E3 /* Product.m */,
 				9E62FF231E4A33F1002D55B8 /* ProductVC.h */,
 				9E62FF241E4A33F1002D55B8 /* ProductVC.m */,
+				8410EC341E8C0C2000C11508 /* DAO.h */,
+				8410EC351E8C0C2000C11508 /* DAO.m */,
 				841F39C61E82E4F600F0FB0E /* ProductWebVC.h */,
 				841F39C71E82E4F600F0FB0E /* ProductWebVC.m */,
 				9E62FF251E4A33F1002D55B8 /* ProductVC.xib */,
@@ -371,8 +386,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A7A8521E8AC1CC008F25E3 /* Product.m in Sources */,
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
+				84A7A84F1E8AC17E008F25E3 /* Company.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
+				8410EC361E8C0C2000C11508 /* DAO.m in Sources */,
 				841F39C91E82E4F600F0FB0E /* ProductWebVC.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,

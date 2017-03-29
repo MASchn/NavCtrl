@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductVC.h"
+#import "DAO.h"
 
 @interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, retain) DAO *dao;
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *companyList;
