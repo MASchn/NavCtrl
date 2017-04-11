@@ -22,5 +22,15 @@
 }
 
 
+- (instancetype)initWithCompanyName: (NSString*)companyNameInput
+                       downloadLogo: (UIImage*)companyLogoInput{
+    
+    self.companyName = companyNameInput;
+    self.companyLogo = companyLogoInput;
+    self.products = [[NSMutableArray alloc]init];
+    
+    return self;
+}
+
 
 @end

@@ -19,9 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
-    self.navigationItem.rightBarButtonItem = editButton;
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonProduct)];
+    //self.navigationItem.rightBarButtonItem = editButton;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton, addButton, nil];
     // Do any additional setup after loading the view from its nib.
+        self.dao = [DAO sharedManager];
+     self.tableView.allowsSelectionDuringEditing = YES;
 }
+
 
 
 - (void)toggleEditMode {
@@ -35,10 +41,23 @@
     }
     
 }
+-(void)addButtonProduct{
+    self.dao.productAdd = YES;
+    addScreenVC *addScreen = [[addScreenVC alloc]init];
+    addScreen.companyToEdit = self.selectedCompany;
+    [self.navigationController pushViewController:addScreen animated:YES];
+    NSLog(@"Gangsta bidness");
+}
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.dao.productAdd = NO;
+    self.dao.companyAdd = NO;
+    self.dao.productEdit = NO;
+    self.dao.companyEdit = NO;
+    
+    [self.tableView reloadData];
 
 }
 
@@ -137,6 +156,20 @@
  // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
  - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
+     
+     if (self.tableView.isEditing) {
+         
+         //push to an edit vc
+         self.dao.productEdit = YES;
+         addScreenVC *addScreen = [[addScreenVC alloc]init];
+         Product *currentProduct = [self.selectedCompany.products objectAtIndex:indexPath.row];
+         addScreen.productToEdit = currentProduct;
+         [self.navigationController pushViewController: addScreen animated:YES];
+         
+         return;
+     }
+
+     
  // Navigation logic may go here, for example:
  // Create the next view controller.
      ProductWebVC *detailViewController = [[ProductWebVC alloc] init]; // Pass the selected object to the new view controller.

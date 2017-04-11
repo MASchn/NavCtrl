@@ -23,5 +23,16 @@
     return self;
 }
 
+- (instancetype)initWithProductName: (NSString*)productNameInput
+                       downloadLogo: (UIImage*)productLogoInput{
+    
+    self.productName = productNameInput;
+    self.productImage = productLogoInput;
+    
+    
+    return self;
+}
+
+
 
 @end

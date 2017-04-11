@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,6 +39,8 @@
 		84607DAD1E843D5F00AD6148 /* xps.png in Resources */ = {isa = PBXBuildFile; fileRef = 84607DAA1E843D5F00AD6148 /* xps.png */; };
 		84607DAE1E843D5F00AD6148 /* lumia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84607DAB1E843D5F00AD6148 /* lumia.jpg */; };
 		84607DAF1E843D5F00AD6148 /* surfacePro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84607DAC1E843D5F00AD6148 /* surfacePro.jpg */; };
+		8469F9FE1E8C435200FCFD54 /* addScreenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469F9FC1E8C435200FCFD54 /* addScreenVC.m */; };
+		8469F9FF1E8C435200FCFD54 /* addScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8469F9FD1E8C435200FCFD54 /* addScreenVC.xib */; };
 		84A7A84F1E8AC17E008F25E3 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A84E1E8AC17E008F25E3 /* Company.m */; };
 		84A7A8521E8AC1CC008F25E3 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A8511E8AC1CC008F25E3 /* Product.m */; };
 		9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */; };
@@ -97,6 +99,9 @@
 		84607DAA1E843D5F00AD6148 /* xps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xps.png; sourceTree = "<group>"; };
 		84607DAB1E843D5F00AD6148 /* lumia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lumia.jpg; sourceTree = "<group>"; };
 		84607DAC1E843D5F00AD6148 /* surfacePro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = surfacePro.jpg; sourceTree = "<group>"; };
+		8469F9FB1E8C435200FCFD54 /* addScreenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addScreenVC.h; sourceTree = "<group>"; };
+		8469F9FC1E8C435200FCFD54 /* addScreenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addScreenVC.m; sourceTree = "<group>"; };
+		8469F9FD1E8C435200FCFD54 /* addScreenVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addScreenVC.xib; sourceTree = "<group>"; };
 		84A7A84D1E8AC17E008F25E3 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		84A7A84E1E8AC17E008F25E3 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		84A7A8501E8AC1CC008F25E3 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = ../Product.h; sourceTree = "<group>"; };
@@ -151,6 +156,9 @@
 				84A7A84E1E8AC17E008F25E3 /* Company.m */,
 				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
 				9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */,
+				8469F9FB1E8C435200FCFD54 /* addScreenVC.h */,
+				8469F9FC1E8C435200FCFD54 /* addScreenVC.m */,
+				8469F9FD1E8C435200FCFD54 /* addScreenVC.xib */,
 				9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */,
 			);
 			name = ParentViewController;
@@ -324,7 +332,7 @@
 				};
 			};
 			buildConfigurationList = 48A656AC18163BF200746D36 /* Build configuration list for PBXProject "NavCtrl" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -368,6 +376,7 @@
 				84607D951E842C8A00AD6148 /* google.png in Resources */,
 				84607D941E842C8A00AD6148 /* samsung.png in Resources */,
 				84607D9B1E84379500AD6148 /* ipod.png in Resources */,
+				8469F9FF1E8C435200FCFD54 /* addScreenVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +403,7 @@
 				841F39C91E82E4F600F0FB0E /* ProductWebVC.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,
+				8469F9FE1E8C435200FCFD54 /* addScreenVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +537,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NavCtrl/NavCtrl-Prefix.pch";
 				INFOPLIST_FILE = "NavCtrl/NavCtrl-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "turntotech.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -543,6 +554,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NavCtrl/NavCtrl-Prefix.pch";
 				INFOPLIST_FILE = "NavCtrl/NavCtrl-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "turntotech.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

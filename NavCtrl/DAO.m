@@ -23,6 +23,12 @@
 
 
 -(void) createCompaniesAndProducts {
+    
+    self.companyAdd = NO;
+    self.productAdd = NO;
+    self.companyEdit = NO;
+    self.productEdit = NO;
+    
 
 Product *iPad = [[Product alloc]initWithProductName:@"iPad" andProductURL:@"http://www.apple.com/ipad/" andProductImage:@"ipad.png"];
 

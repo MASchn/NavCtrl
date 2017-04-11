@@ -15,8 +15,12 @@
 @interface DAO : NSObject
 
 
-
+//@property (nonatomic, retain) addScreenVC *addScreen;
 @property (retain, nonatomic) NSMutableArray<Company*> *companyList;
+@property BOOL companyAdd;
+@property BOOL productAdd;
+@property BOOL companyEdit;
+@property BOOL productEdit;
 
 + (id)sharedManager;
 -(void) createCompaniesAndProducts;

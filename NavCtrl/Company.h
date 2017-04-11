@@ -10,6 +10,8 @@
 
 @interface Company : NSObject
 
+
+
 @property (nonatomic, retain) NSString *companyName;
 @property (nonatomic, retain) UIImage *companyLogo;
 @property (nonatomic, retain) NSMutableArray *products;
@@ -18,4 +20,8 @@
                             andLogo: (NSString*)companyLogo
                         andProducts: (NSMutableArray*)productArray;
 
+
+
+- (instancetype)initWithCompanyName: (NSString*)companyName
+                       downloadLogo: (UIImage*)companyLogo;
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ProductVC.h"
 #import "DAO.h"
+#import "addScreenVC.h"
 
 @interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
@@ -17,6 +18,7 @@
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *companyList;
 @property (nonatomic, retain) ProductVC *productViewController;
+@property (nonatomic, retain) addScreenVC *addScreen;
 @property (nonatomic, retain) NSMutableArray *appleProducts;
 @property (nonatomic, retain) NSMutableArray *samsungProducts;
 @property (nonatomic, retain) NSMutableArray *googleProducts;

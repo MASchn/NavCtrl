@@ -8,7 +8,7 @@
 #import "Product.h"
 #import "CompanyVC.h"
 #import "Company.h"
-
+//#import "addScreenVC.h"
 
 @interface CompanyVC ()
 
@@ -22,9 +22,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
-    self.navigationItem.rightBarButtonItem = editButton;
-    
+//     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton, addButton, nil];
+//    self.navigationItem.leftBarButtonItem = editButton;
+//    self.navigationItem.rightBarButtonItem = addButton;
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     self.dao = [DAO sharedManager];
+    self.tableView.allowsSelectionDuringEditing = YES;
     
 //    self.companyList = self.dao.companyList;
     
@@ -32,15 +38,34 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    self.dao.productAdd = NO;
+    self.dao.companyAdd = NO;
+    self.dao.productEdit = NO;
+    self.dao.companyEdit = NO;
+    [self.tableView reloadData];
+}
+
+-(void)addButtonPressed{
+    self.dao.companyAdd = YES;
+    addScreenVC *addScreen = [[addScreenVC alloc]init];
+    addScreen.companyToEdit = self.productViewController.selectedCompany;
+    [self.navigationController pushViewController:addScreen animated:YES];
+//    NSLog(@"Gangsta bidness");
+}
 
 - (void)toggleEditMode {
-    
+    self.dao.companyEdit = YES;
     if (self.tableView.editing) {
         [self.tableView setEditing:NO animated:YES];
         self.navigationItem.rightBarButtonItem.title = @"Edit";
+//        self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+//        self.navigationItem.leftBarButtonItem.enabled = NO;
     } else {
         [self.tableView setEditing:YES animated:NO];
         self.navigationItem.rightBarButtonItem.title = @"Done";
+        self.navigationItem.leftBarButtonItem.tintColor = [UIColor blueColor];
+        self.navigationItem.leftBarButtonItem.enabled = YES;
     }
     
 }
@@ -79,7 +104,14 @@
     // Configure the cell...
     
     cell.textLabel.text = currentCompany.companyName;
-    cell.imageView.image = currentCompany.companyLogo;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *tempImage = currentCompany.companyLogo;
+    
+    [tempImage drawInRect:CGRectMake(0, 0, 32, 32)];
+    cell.imageView.image = tempImage;
+    cell.imageView.clipsToBounds = YES;
+    cell.imageView.frame = CGRectMake(0, 0, 40, 40);
+    
     
 //    cell.imageView.image = self.dao.companyList
     
@@ -158,6 +190,18 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    if (self.tableView.isEditing) {
+        
+        //push to an edit vc
+        self.dao.companyEdit = YES;
+         addScreenVC *addScreen = [[addScreenVC alloc]init];
+        addScreen.companyToEdit = [self.dao.companyList objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController: addScreen animated:YES];
+        
+        return;
+    }
     
     self.productViewController = [[ProductVC alloc]init];
     

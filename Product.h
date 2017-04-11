@@ -18,4 +18,9 @@
                      andProductURL: (NSString*)productURLInput
                    andProductImage: (NSString*)imageInput;
 
+
+- (instancetype)initWithProductName: (NSString*)productName
+                       downloadLogo: (UIImage*)productLogo;
+
+
 @end
