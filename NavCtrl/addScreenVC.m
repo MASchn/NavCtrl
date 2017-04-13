@@ -29,15 +29,34 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     if(self.dao.companyAdd == YES){
+        self.websiteLabel.hidden = NO;
+        self.websiteTextField.hidden = NO;
         self.textName.text = @"Company Name:";
+        self.websiteLabel.text = @"Enter Stock Ticker Name:";
     }
+    
+    
+    
+    
     else if(self.dao.productAdd == YES){
         self.textName.text = @"Product Name:";
     }
+    
+    
+    
+    
+    
     else if (self.dao.companyEdit == YES){
+        self.websiteLabel.hidden = NO;
+        self.websiteTextField.hidden = NO;
+        self.websiteLabel.text = @"Enter Stock Ticker Name:";
         self.textName.text = @"Company Name:";
         
     }
+    
+    
+    
+    
     else if(self.dao.productEdit == YES){
         self.textName.text = @"Product Name:";
         self.websiteLabel.hidden = NO;
@@ -82,7 +101,7 @@
         
         
         if (self.dao.companyAdd == YES){
-        Company *newCompany = [[Company alloc]initWithCompanyName:self.companyTextField.text downloadLogo:img];
+            Company *newCompany = [[Company alloc]initWithCompanyName:self.companyTextField.text downloadLogo:img ticker: self.websiteLabel.text stockPrice: @"Loading..."];
         
         [self.dao.companyList addObject:newCompany];
         }
@@ -121,6 +140,8 @@
             self.dao.productAdd = NO;
             self.dao.companyEdit = NO;
             self.dao.productEdit = NO;
+            self.websiteLabel.hidden = NO;
+            self.websiteTextField.hidden = NO;
             [self.navigationController popViewControllerAnimated:YES];
         });
     });

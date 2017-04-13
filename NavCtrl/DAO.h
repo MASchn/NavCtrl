@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Company.h"
 #import "Product.h"
+#import "StockPriceDelegate.h"
 
 
 
@@ -21,9 +22,12 @@
 @property BOOL productAdd;
 @property BOOL companyEdit;
 @property BOOL productEdit;
+@property (retain, nonatomic) NSMutableArray *stockArray;
+@property (strong, nonatomic) id<StockPriceDelegate> delegate;
 
 + (id)sharedManager;
 -(void) createCompaniesAndProducts;
+-(void)fetchStockData;
 
 
 @end

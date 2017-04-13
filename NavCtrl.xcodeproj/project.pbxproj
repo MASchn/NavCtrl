@@ -106,6 +106,7 @@
 		84A7A84E1E8AC17E008F25E3 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		84A7A8501E8AC1CC008F25E3 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = ../Product.h; sourceTree = "<group>"; };
 		84A7A8511E8AC1CC008F25E3 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = ../Product.m; sourceTree = "<group>"; };
+		84E0347E1E9EC271001DC37A /* StockPriceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockPriceDelegate.h; sourceTree = "<group>"; };
 		9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyVC.h; sourceTree = "<group>"; };
 		9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyVC.m; sourceTree = "<group>"; };
 		9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyVC.xib; sourceTree = "<group>"; };
@@ -155,6 +156,7 @@
 				84A7A84D1E8AC17E008F25E3 /* Company.h */,
 				84A7A84E1E8AC17E008F25E3 /* Company.m */,
 				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
+				84E0347E1E9EC271001DC37A /* StockPriceDelegate.h */,
 				9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */,
 				8469F9FB1E8C435200FCFD54 /* addScreenVC.h */,
 				8469F9FC1E8C435200FCFD54 /* addScreenVC.m */,

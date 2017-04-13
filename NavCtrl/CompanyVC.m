@@ -30,6 +30,7 @@
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
     self.navigationItem.leftBarButtonItem.enabled = NO;
     self.dao = [DAO sharedManager];
+    self.dao.delegate = self;
     self.tableView.allowsSelectionDuringEditing = YES;
     
 //    self.companyList = self.dao.companyList;
@@ -43,6 +44,12 @@
     self.dao.companyAdd = NO;
     self.dao.productEdit = NO;
     self.dao.companyEdit = NO;
+    [self.dao fetchStockData];
+    [self.tableView reloadData];
+}
+
+
+-(void)didUpdateCompanyStockPrices {
     [self.tableView reloadData];
 }
 
@@ -96,7 +103,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     Company *currentCompany = [self.dao.companyList objectAtIndex:indexPath.row];
@@ -104,6 +111,8 @@
     // Configure the cell...
     
     cell.textLabel.text = currentCompany.companyName;
+    //if condition
+    cell.detailTextLabel.text = currentCompany.stockPrice;
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     UIImage *tempImage = currentCompany.companyLogo;
     

@@ -11,7 +11,7 @@
 #import "DAO.h"
 #import "addScreenVC.h"
 
-@interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource, StockPriceDelegate>
 
 @property (nonatomic, retain) DAO *dao;
 
