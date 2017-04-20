@@ -19,6 +19,7 @@
         self.productName = productNameInput;
         self.productURL = productURLInput;
         self.productImage = [UIImage imageNamed: imageInput];
+        self.productImageString = imageInput;
     }
     return self;
 }
@@ -32,6 +33,7 @@
     
     return self;
 }
+
 
 
 

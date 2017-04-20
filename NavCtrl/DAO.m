@@ -17,14 +17,33 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
-        [sharedMyManager createCompaniesAndProducts];
         
+        NavControllerAppDelegate *appDelegate = (NavControllerAppDelegate*)[UIApplication sharedApplication].delegate;
+        NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
+        sharedMyManager.context = context;
+        sharedMyManager.managedCompanyList = [[NSMutableArray alloc] init];
+        if([[NSUserDefaults standardUserDefaults]boolForKey:@"Ran Once"] == NO){
+        [sharedMyManager createCompaniesAndProducts];
+        }
+        else{
+            
+           
+            [sharedMyManager fetchCoreData];
+            //Fetchrequest method
+            
+        }
     });
     return sharedMyManager;
 }
 
 
+//NSFetchRequest
+
+
 -(void) createCompaniesAndProducts {
+    
+
+    
     
     self.companyAdd = NO;
     self.productAdd = NO;
@@ -94,10 +113,87 @@ Product *surfacePro = [[Product alloc] initWithProductName:@"Surface"
     Company *microsoft = [[Company alloc]initWithCompanyName:@"Microsoft" andLogo:@"microsoft.png" andProducts:[[NSMutableArray alloc]initWithObjects:lumia,xps, surfacePro, nil] andTicker: @"MSFT" andStockPrice: @"Loading..."];
 
 self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, google, microsoft, nil];
+    
+    
+    for (Company *comp in self.companyList) {
+        
+        
+        ManagedCompany *mC = [NSEntityDescription insertNewObjectForEntityForName:@"ManagedCompany" inManagedObjectContext:self.context];
+        mC.companyName = comp.companyName;
+        mC.companyTicker = comp.ticker;
+        mC.companyLogoString = comp.companyImageString;
+        for (Product *prod in comp.products) {
+            ManagedProduct *mP = [NSEntityDescription insertNewObjectForEntityForName:@"ManagedProduct" inManagedObjectContext:self.context];
+            mP.productName = prod.productName;
+            mP.productURL = prod.productURL;
+            mP.imageString = prod.productImageString;
+            [mP setCompany:mC];
+            [mC.products setByAddingObject:mP];
+            
+            //Do URL Image String stuff here
+        }
+        
+        [self.managedCompanyList addObject:mC];
+        
+        
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Ran Once"];
+    }
 
-   
+
+    [self.context save:nil];
 }
 
+
+-(void) fetchCoreData {
+    self.companyList = [[NSMutableArray alloc] init];
+//    ManagedCompany *company = [self.context executeFetchRequest:[self.managedCompanyList[0] fetchRequest] error:nil];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"ManagedCompany"];
+//    [request setReturnsObjectsAsFaults:NO];
+    
+    NSError *err = nil;
+
+    NSArray *results = [self.context executeFetchRequest:request error:&err];
+    
+    NSLog(@"RESULTS ARRAY: %@", results);
+    
+    self.managedCompanyList = [NSMutableArray arrayWithArray:results];
+    
+    
+    NSLog(@"MANAGED COMPANIES: %lu", (unsigned long)self.managedCompanyList.count);
+    
+    for (ManagedCompany *mC in self.managedCompanyList) {
+        
+        
+        Company *newComp = [[Company alloc] initWithCompanyName:mC.companyName andLogo:mC.companyLogoString andProducts:nil andTicker:mC.companyTicker andStockPrice:@"Loading..."];
+        
+        newComp.products = [[NSMutableArray alloc]init];
+        
+        NSLog(@"%lu", mC.products.count);
+        
+        for (ManagedProduct *prod in mC.products) {
+            Product *newProd = [[Product alloc] initWithProductName:prod.productName andProductURL:prod.productURL andProductImage: prod.imageString];
+            
+            [newComp.products addObject:newProd];
+            
+        }
+        
+        [self.companyList addObject:newComp];
+    }
+    
+//     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+//    [fetchRequest set]
+    
+    
+    
+//    NSEntityDescription *e = [[ entitiesByName] objectForKey:@"Employee"];
+//    [request setEntity:e];
+    
+    
+}
 
 
 -(void)fetchStockData {
@@ -143,46 +239,22 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
 
 
 
+-(void) addCompany: (Company*) company{
     
+    [self.companyList addObject:company];
     
+    ManagedCompany *mC = [NSEntityDescription insertNewObjectForEntityForName:@"ManagedCompany" inManagedObjectContext:self.context];
+    mC.companyName = company.companyName;
+    mC.companyTicker = company.ticker;
+    mC.companyLogoString = company.companyImageString;
     
-//    NSString ticker =
-//    
-//    ///assign data to companies
-//    
-//    NSString *urlString = [NSString stringWithFormat:@"http://finance.yahoo.com/d/quotes.csv?s=%@&f=a", ticker];
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    
-//    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//
-//        if (error) {
-//            if ([self.delegate respondsToSelector:@selector(stockFetchDidFailWithError:)]) {
-//
-//                //we are not on the main queue at this point so it is important to dispatch blocks
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//
-//                    //communicate with the delegate that we have failed and give it the error object for further handling
-//                    [self.delegate stockFetchDidFailWithError:error];
-//                });
-//            }
-//        } else {
-//            NSString *priceString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//
-//                //communicate with the delegate that we have succeeded in fetching a stock price and giving the delegate the stockprice for further processing
-//                [self.delegate stockFetchSuccessWithPriceString:priceString];
-//            });
-//        }
-//    }];
-//    [task resume];
-//                
-//                
-//                [self.delegate didUpdateCompanyStockPrices];
-//                
-//}
+    [self.managedCompanyList addObject:mC];
     
+    [self.context save:nil];
+    
+}
 
-                                   
+
     
 
 

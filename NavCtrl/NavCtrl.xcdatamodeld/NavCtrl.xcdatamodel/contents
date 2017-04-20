@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="ManagedCompany" representedClassName="ManagedCompany" syncable="YES" codeGenerationType="class">
+        <attribute name="companyLogoString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyTicker" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedProduct" inverseName="company" inverseEntity="ManagedProduct" syncable="YES"/>
+    </entity>
+    <entity name="ManagedProduct" representedClassName="ManagedProduct" syncable="YES" codeGenerationType="class">
+        <attribute name="imageString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCompany" inverseName="products" inverseEntity="ManagedCompany" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ManagedCompany" positionX="718" positionY="-207" width="128" height="103"/>
+        <element name="ManagedProduct" positionX="709" positionY="144" width="128" height="105"/>
+    </elements>
+</model>

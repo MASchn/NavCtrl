@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSString *productName;
 @property (nonatomic, retain) NSString *productURL;
 @property (nonatomic, retain) UIImage *productImage;
+@property (nonatomic, retain) NSString *productImageString;
 
 -(instancetype)initWithProductName: (NSString*)productNameInput
                      andProductURL: (NSString*)productURLInput
@@ -21,6 +22,9 @@
 
 - (instancetype)initWithProductName: (NSString*)productName
                        downloadLogo: (UIImage*)productLogo;
+
+
+
 
 
 @end

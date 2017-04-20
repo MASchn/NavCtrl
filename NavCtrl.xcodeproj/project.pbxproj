@@ -43,6 +43,8 @@
 		8469F9FF1E8C435200FCFD54 /* addScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8469F9FD1E8C435200FCFD54 /* addScreenVC.xib */; };
 		84A7A84F1E8AC17E008F25E3 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A84E1E8AC17E008F25E3 /* Company.m */; };
 		84A7A8521E8AC1CC008F25E3 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A8511E8AC1CC008F25E3 /* Product.m */; };
+		84E66CD11EA66CEE00466911 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66CD01EA66CEE00466911 /* CoreData.framework */; };
+		84E66CD41EA66DE900466911 /* NavCtrl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E66CD21EA66DE900466911 /* NavCtrl.xcdatamodeld */; };
 		9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */; };
 		9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */; };
 		9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF241E4A33F1002D55B8 /* ProductVC.m */; };
@@ -107,6 +109,8 @@
 		84A7A8501E8AC1CC008F25E3 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = ../Product.h; sourceTree = "<group>"; };
 		84A7A8511E8AC1CC008F25E3 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = ../Product.m; sourceTree = "<group>"; };
 		84E0347E1E9EC271001DC37A /* StockPriceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockPriceDelegate.h; sourceTree = "<group>"; };
+		84E66CD01EA66CEE00466911 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		84E66CD31EA66DE900466911 /* NavCtrl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NavCtrl.xcdatamodel; sourceTree = "<group>"; };
 		9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyVC.h; sourceTree = "<group>"; };
 		9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyVC.m; sourceTree = "<group>"; };
 		9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyVC.xib; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E66CD11EA66CEE00466911 /* CoreData.framework in Frameworks */,
 				84227B7D1E857EA80082466D /* WebKit.framework in Frameworks */,
 				48A656B718163BF200746D36 /* CoreGraphics.framework in Frameworks */,
 				48A656B918163BF200746D36 /* UIKit.framework in Frameworks */,
@@ -146,6 +151,7 @@
 			children = (
 				48A656C318163BF200746D36 /* NavControllerAppDelegate.h */,
 				48A656C418163BF200746D36 /* NavControllerAppDelegate.m */,
+				84E66CD21EA66DE900466911 /* NavCtrl.xcdatamodeld */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -204,6 +210,7 @@
 		48A656B318163BF200746D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84E66CD01EA66CEE00466911 /* CoreData.framework */,
 				84227B7C1E857EA80082466D /* WebKit.framework */,
 				48A656B418163BF200746D36 /* Foundation.framework */,
 				48A656B618163BF200746D36 /* CoreGraphics.framework */,
@@ -401,6 +408,7 @@
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
 				84A7A84F1E8AC17E008F25E3 /* Company.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
+				84E66CD41EA66DE900466911 /* NavCtrl.xcdatamodeld in Sources */,
 				8410EC361E8C0C2000C11508 /* DAO.m in Sources */,
 				841F39C91E82E4F600F0FB0E /* ProductWebVC.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
@@ -637,6 +645,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84E66CD21EA66DE900466911 /* NavCtrl.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84E66CD31EA66DE900466911 /* NavCtrl.xcdatamodel */,
+			);
+			currentVersion = 84E66CD31EA66DE900466911 /* NavCtrl.xcdatamodel */;
+			path = NavCtrl.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 48A656A918163BF200746D36 /* Project object */;
 }

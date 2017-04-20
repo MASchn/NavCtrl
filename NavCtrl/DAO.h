@@ -10,7 +10,9 @@
 #import "Company.h"
 #import "Product.h"
 #import "StockPriceDelegate.h"
-
+#import "ManagedCompany+CoreDataClass.h"
+#import "NavControllerAppDelegate.h"
+#import "ManagedProduct+CoreDataClass.h"
 
 
 @interface DAO : NSObject
@@ -18,16 +20,19 @@
 
 //@property (nonatomic, retain) addScreenVC *addScreen;
 @property (retain, nonatomic) NSMutableArray<Company*> *companyList;
+@property (retain, nonatomic) NSMutableArray *managedCompanyList;
 @property BOOL companyAdd;
 @property BOOL productAdd;
 @property BOOL companyEdit;
 @property BOOL productEdit;
 @property (retain, nonatomic) NSMutableArray *stockArray;
 @property (strong, nonatomic) id<StockPriceDelegate> delegate;
+@property(nonatomic) NSManagedObjectContext *context;
 
 + (id)sharedManager;
 -(void) createCompaniesAndProducts;
 -(void)fetchStockData;
+-(void) addCompany: (Company*) company;
 
 
 @end

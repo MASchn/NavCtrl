@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Company : NSObject
 
 
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) NSMutableArray *products;
 @property (nonatomic, retain) NSString *ticker;
 @property (nonatomic, retain) NSString *stockPrice;
+@property (nonatomic, retain) NSString *companyImageString;
 
 - (instancetype)initWithCompanyName: (NSString*)companyName
                             andLogo: (NSString*)companyLogo

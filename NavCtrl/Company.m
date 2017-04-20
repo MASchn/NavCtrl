@@ -21,6 +21,7 @@
     self.products = productArray;
     self.ticker = companyTicker;
         self.stockPrice = companyPrice;
+        self.companyImageString = companyLogoInput;
     }
     return self;
 }

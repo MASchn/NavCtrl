@@ -101,9 +101,10 @@
         
         
         if (self.dao.companyAdd == YES){
+            
             Company *newCompany = [[Company alloc]initWithCompanyName:self.companyTextField.text downloadLogo:img ticker: self.websiteLabel.text stockPrice: @"Loading..."];
-        
-        [self.dao.companyList addObject:newCompany];
+            
+            [self.dao addCompany:newCompany];
         }
         
         else if (self.dao.productAdd == YES){
