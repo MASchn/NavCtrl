@@ -37,6 +37,17 @@
     self.title = @"Mobile device makers";
     // Do any additional setup after loading the view from its nib.
 }
+- (IBAction)redoButton:(id)sender {
+    [self.dao.context redo];
+    [self.dao fetchCoreData];
+    [self.tableView reloadData];
+}
+
+- (IBAction)undoButton:(id)sender {
+    [self.dao.context undo];
+    [self.dao fetchCoreData];
+    [self.tableView reloadData];
+}
 
 -(void)viewWillAppear:(BOOL)animated {
     self.dao.productAdd = NO;
@@ -105,20 +116,23 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    Company *currentCompany = [self.dao.companyList objectAtIndex:indexPath.row];
+    if ([self.dao.companyList count]>0) {
+        Company *currentCompany = [self.dao.companyList objectAtIndex:indexPath.row];
+        
+        // Configure the cell...
+        
+        cell.textLabel.text = currentCompany.companyName;
+        //if condition
+        cell.detailTextLabel.text = currentCompany.stockPrice;
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        UIImage *tempImage = currentCompany.companyLogo;
+        
+        [tempImage drawInRect:CGRectMake(0, 0, 32, 32)];
+        cell.imageView.image = tempImage;
+        cell.imageView.clipsToBounds = YES;
+        cell.imageView.frame = CGRectMake(0, 0, 40, 40);
+    }
     
-    // Configure the cell...
-    
-    cell.textLabel.text = currentCompany.companyName;
-    //if condition
-    cell.detailTextLabel.text = currentCompany.stockPrice;
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    UIImage *tempImage = currentCompany.companyLogo;
-    
-    [tempImage drawInRect:CGRectMake(0, 0, 32, 32)];
-    cell.imageView.image = tempImage;
-    cell.imageView.clipsToBounds = YES;
-    cell.imageView.frame = CGRectMake(0, 0, 40, 40);
     
     
 //    cell.imageView.image = self.dao.companyList
@@ -130,7 +144,10 @@
     
     if(editingStyle == UITableViewCellEditingStyleDelete){
         
-        [self.dao.companyList removeObjectAtIndex:indexPath.row];
+     
+//        [self.dao.managedCompanyList removeObjectAtIndex:indexPath.row];
+        [self.dao deleteCompany: [self.dao.companyList objectAtIndex:indexPath.row]];
+
         [self.tableView reloadData];
         
     }
@@ -236,6 +253,13 @@
 
 - (void)dealloc {
     [_tableView release];
+    [_companyList release];
+    [_productViewController release];
+    [_addScreen release];
+    [_appleProducts release];
+    [_samsungProducts release];
+    [_googleProducts release];
+    [_microsoftProducts release];
     [super dealloc];
 }
 @end

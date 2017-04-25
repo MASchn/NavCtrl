@@ -27,12 +27,17 @@
 @property BOOL productEdit;
 @property (retain, nonatomic) NSMutableArray *stockArray;
 @property (strong, nonatomic) id<StockPriceDelegate> delegate;
-@property(nonatomic) NSManagedObjectContext *context;
+@property(nonatomic, strong) NSManagedObjectContext *context;
 
 + (id)sharedManager;
 -(void) createCompaniesAndProducts;
 -(void)fetchStockData;
 -(void) addCompany: (Company*) company;
+-(void)deleteCompany: (Company*)company;
+-(void)editCompany: (Company*) company;
+-(void)addProduct: (Product*) product andCompany:(Company*) company;
+-(void)editProduct: (Product*) product andCompany:(Company*) company;
+-(void) fetchCoreData;
 
 
 @end

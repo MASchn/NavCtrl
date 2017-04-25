@@ -114,6 +114,22 @@ Product *surfacePro = [[Product alloc] initWithProductName:@"Surface"
 
 self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, google, microsoft, nil];
     
+    [microsoft release];
+    [apple release];
+    [google release];
+    [samsung release];
+    [surfacePro release];
+    [xps release];
+    [lumia release];
+    [daydream release];
+    [nexus release];
+    [pixel release];
+    [galaxyS7 release];
+    [galaxyTab release];
+    [galaxyNote release];
+    [iPad release];
+    [iPhone release];
+    [iPodTouch release];
     
     for (Company *comp in self.companyList) {
         
@@ -149,21 +165,18 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
 
 -(void) fetchCoreData {
     self.companyList = [[NSMutableArray alloc] init];
-//    ManagedCompany *company = [self.context executeFetchRequest:[self.managedCompanyList[0] fetchRequest] error:nil];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"ManagedCompany"];
-//    [request setReturnsObjectsAsFaults:NO];
     
     NSError *err = nil;
 
     NSArray *results = [self.context executeFetchRequest:request error:&err];
     
-    NSLog(@"RESULTS ARRAY: %@", results);
+
     
     self.managedCompanyList = [NSMutableArray arrayWithArray:results];
     
-    
-    NSLog(@"MANAGED COMPANIES: %lu", (unsigned long)self.managedCompanyList.count);
+
     
     for (ManagedCompany *mC in self.managedCompanyList) {
         
@@ -172,25 +185,21 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
         
         newComp.products = [[NSMutableArray alloc]init];
         
-        NSLog(@"%lu", mC.products.count);
+//        NSLog(@"%lu", mC.products.count);
         
         for (ManagedProduct *prod in mC.products) {
             Product *newProd = [[Product alloc] initWithProductName:prod.productName andProductURL:prod.productURL andProductImage: prod.imageString];
             
             [newComp.products addObject:newProd];
+            [newProd release];
             
         }
         
         [self.companyList addObject:newComp];
+        [newComp release];
+//        [self.managedCompanyList release];
+        
     }
-    
-//     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-//    [fetchRequest set]
-    
-    
-    
-//    NSEntityDescription *e = [[ entitiesByName] objectForKey:@"Employee"];
-//    [request setEntity:e];
     
     
 }
@@ -203,12 +212,12 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
     }
     
     NSString *tickerData = [self.stockArray componentsJoinedByString:@"+"];
-    NSLog(@"TICKER DATA: %@",tickerData);
+//    NSLog(@"TICKER DATA: %@",tickerData);
 
     NSString *urlString = [NSString stringWithFormat:@"http://finance.yahoo.com/d/quotes.csv?s=%@&f=a", tickerData];
         NSURL *url = [NSURL URLWithString:urlString];
     
-    NSLog(@"URL: %@",url);
+//    NSLog(@"URL: %@",url);
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url];
     request.HTTPMethod = @"GET";
@@ -220,7 +229,7 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
         NSString *resultsString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         NSArray *resultsArray = [resultsString componentsSeparatedByString:@"\n"];
         
-        NSLog(@"RESULTS: %@", resultsArray);
+//        NSLog(@"RESULTS: %@", resultsArray);
         
         int i = 0;
         
@@ -228,6 +237,12 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
             company.stockPrice = resultsArray[i];
             i++;
         }
+        [request release];
+        [self.stockArray release];
+        [session release];
+        [resultsString release];
+        [resultsArray release];
+        
          dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate didUpdateCompanyStockPrices];
          });
@@ -244,18 +259,114 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
     [self.companyList addObject:company];
     
     ManagedCompany *mC = [NSEntityDescription insertNewObjectForEntityForName:@"ManagedCompany" inManagedObjectContext:self.context];
-    mC.companyName = company.companyName;
-    mC.companyTicker = company.ticker;
-    mC.companyLogoString = company.companyImageString;
+    [mC setCompanyName:company.companyName];
+    [mC setCompanyTicker:company.ticker];
+    [mC setCompanyLogoString:company.companyImageString];
     
     [self.managedCompanyList addObject:mC];
     
-    [self.context save:nil];
+//    [self.context save:nil];
     
 }
 
 
+-(void)deleteCompany: (Company*)company{
     
+    NavControllerAppDelegate *appDelegate = (NavControllerAppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
+    // find index from companyList
+    int index = (int)[self.companyList indexOfObject:company];
+    ManagedCompany *mC = [self.managedCompanyList objectAtIndex:index];
+    
+    
+    [self.managedCompanyList removeObjectAtIndex:index];
+    [context deleteObject:mC];
+    [self.companyList removeObjectAtIndex:index];
+    NSError *err = nil;
+    BOOL successful = [context save:&err];
+    if(!successful){
+        NSLog(@"Error saving: %@", [err localizedDescription]);
+    }else{
+        NSLog(@"Data Saved");
+    }
+
+    
+}
+
+-(void)editCompany: (Company*) company{
+    
+    
+    int index = (int)[self.companyList indexOfObject:company];
+    ManagedCompany *mC = [self.managedCompanyList objectAtIndex:index];
+    [mC setCompanyName:company.companyName];
+    [mC setCompanyTicker:company.ticker];
+    [mC setCompanyLogoString:company.companyImageString];
+    
+//    [self.context save:nil];
+    
+}
+
+-(void)addProduct: (Product*) product andCompany:(Company*) company {
+    
+    int index = (int)[self.companyList indexOfObject:company];
+    ManagedCompany *mC = [self.managedCompanyList objectAtIndex:index];
+    
+    ManagedProduct *mP = [NSEntityDescription insertNewObjectForEntityForName:@"ManagedProduct" inManagedObjectContext:self.context];
+    
+    [mP setProductName:product.productName];
+    [mP setProductURL:product.productURL];
+    [mP setImageString:product.productImageString];
+    
+    [mC.products setByAddingObject:mP];
+    mP.company = mC;
+    
+//    [self.context save:nil];
+    
+    
+}
+
+-(void)editProduct: (Product*) product andCompany:(Company*) company {
+    
+    
+    int index = (int)[self.companyList indexOfObject:company];
+    int prodIndex = (int)[company.products indexOfObject:product];
+    ManagedCompany *mC = [self.managedCompanyList objectAtIndex:index];
+    
+    ManagedProduct *mP= [[mC.products allObjects] objectAtIndex:prodIndex];
+    
+    [mP setProductName:product.productName];
+    [mP setImageString:product.productImageString];
+    [mP setProductURL:product.productURL];
+    
+    mP.company = mC;
+    
+//    [self.context save:nil];
+    
+}
+
+//
+//@property (retain, nonatomic) NSMutableArray<Company*> *companyList;
+//@property (retain, nonatomic) NSMutableArray *managedCompanyList;
+//@property BOOL companyAdd;
+//@property BOOL productAdd;
+//@property BOOL companyEdit;
+//@property BOOL productEdit;
+//@property (retain, nonatomic) NSMutableArray *stockArray;
+//@property (strong, nonatomic) id<StockPriceDelegate> delegate;
+//@property(nonatomic, strong) NSManagedObjectContext *context;
+
+-(void)dealloc {
+    [super dealloc];
+    [_managedCompanyList release];
+    [_stockArray release];
+    [_context release];
+    [_companyList release];
+    [_managedCompanyList release];
+    
+    
+    
+}
+
 
 
 

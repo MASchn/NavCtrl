@@ -12,8 +12,7 @@
 @interface addScreenVC : UIViewController
 
 @property (retain, nonatomic) DAO *dao;
-//Current Company
-//Current Product
+
 
 @property (retain, nonatomic) Company *companyToEdit;
 @property (retain, nonatomic) Product *productToEdit;

@@ -45,6 +45,8 @@
 		84A7A8521E8AC1CC008F25E3 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A8511E8AC1CC008F25E3 /* Product.m */; };
 		84E66CD11EA66CEE00466911 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66CD01EA66CEE00466911 /* CoreData.framework */; };
 		84E66CD41EA66DE900466911 /* NavCtrl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E66CD21EA66DE900466911 /* NavCtrl.xcdatamodeld */; };
+		84F2D6C01EAFB7E10041933B /* redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2D6BE1EAFB7E10041933B /* redo.png */; };
+		84F2D6C11EAFB7E10041933B /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2D6BF1EAFB7E10041933B /* undo.png */; };
 		9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */; };
 		9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */; };
 		9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF241E4A33F1002D55B8 /* ProductVC.m */; };
@@ -111,6 +113,8 @@
 		84E0347E1E9EC271001DC37A /* StockPriceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockPriceDelegate.h; sourceTree = "<group>"; };
 		84E66CD01EA66CEE00466911 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		84E66CD31EA66DE900466911 /* NavCtrl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NavCtrl.xcdatamodel; sourceTree = "<group>"; };
+		84F2D6BE1EAFB7E10041933B /* redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redo.png; sourceTree = "<group>"; };
+		84F2D6BF1EAFB7E10041933B /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undo.png; sourceTree = "<group>"; };
 		9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyVC.h; sourceTree = "<group>"; };
 		9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyVC.m; sourceTree = "<group>"; };
 		9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyVC.xib; sourceTree = "<group>"; };
@@ -161,8 +165,8 @@
 			children = (
 				84A7A84D1E8AC17E008F25E3 /* Company.h */,
 				84A7A84E1E8AC17E008F25E3 /* Company.m */,
-				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
 				84E0347E1E9EC271001DC37A /* StockPriceDelegate.h */,
+				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
 				9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */,
 				8469F9FB1E8C435200FCFD54 /* addScreenVC.h */,
 				8469F9FC1E8C435200FCFD54 /* addScreenVC.m */,
@@ -267,6 +271,8 @@
 		84607D991E84315F00AD6148 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				84F2D6BE1EAFB7E10041933B /* redo.png */,
+				84F2D6BF1EAFB7E10041933B /* undo.png */,
 				84607DAA1E843D5F00AD6148 /* xps.png */,
 				84607DAB1E843D5F00AD6148 /* lumia.jpg */,
 				84607DAC1E843D5F00AD6148 /* surfacePro.jpg */,
@@ -368,11 +374,13 @@
 				84607D9D1E8437CD00AD6148 /* iphone.png in Resources */,
 				84607DA21E843A2D00AD6148 /* S7.png in Resources */,
 				84607DA11E843A2D00AD6148 /* note3.jpg in Resources */,
+				84F2D6C01EAFB7E10041933B /* redo.png in Resources */,
 				84607D981E84307F00AD6148 /* ipad.png in Resources */,
 				48A656EE1816468000746D36 /* Sunflower.gif in Resources */,
 				84607DA31E843A2D00AD6148 /* tab.png in Resources */,
 				9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */,
 				84607DA91E843C9C00AD6148 /* daydream.jpg in Resources */,
+				84F2D6C11EAFB7E10041933B /* undo.png in Resources */,
 				84607DAF1E843D5F00AD6148 /* surfacePro.jpg in Resources */,
 				84607D961E842C8A00AD6148 /* apple.jpg in Resources */,
 				84607DA71E843C9C00AD6148 /* pixel.jpeg in Resources */,

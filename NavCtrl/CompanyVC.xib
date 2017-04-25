@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,14 +29,40 @@
                         <outlet property="delegate" destination="-1" id="rfX-ae-JqV"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvP-DN-Z0d" userLabel="Redo">
+                    <rect key="frame" x="317.5" y="610" width="37.5" height="37"/>
+                    <state key="normal" title="Button" image="redo.png"/>
+                    <connections>
+                        <action selector="redoButton:" destination="-1" eventType="touchUpInside" id="ZAe-tQ-mKH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhg-kj-yeF" userLabel="Undo">
+                    <rect key="frame" x="20" y="610" width="37.5" height="37"/>
+                    <state key="normal" title="Button" image="undo.png"/>
+                    <connections>
+                        <action selector="undoButton:" destination="-1" eventType="touchUpInside" id="Ppe-vF-bII"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="WvP-DN-Z0d" firstAttribute="height" secondItem="Mhg-kj-yeF" secondAttribute="height" id="5cL-iM-vQm"/>
+                <constraint firstAttribute="trailing" secondItem="WvP-DN-Z0d" secondAttribute="trailing" constant="20" id="7C7-x6-jpw"/>
+                <constraint firstItem="WvP-DN-Z0d" firstAttribute="width" secondItem="Mhg-kj-yeF" secondAttribute="width" id="Rrl-6X-LYS"/>
+                <constraint firstItem="Mhg-kj-yeF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/18" id="SKE-df-v22"/>
                 <constraint firstItem="b9s-ce-C0v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bEQ-Zw-aaw"/>
+                <constraint firstAttribute="bottom" secondItem="Mhg-kj-yeF" secondAttribute="bottom" constant="20" id="bQf-8u-Ed8"/>
+                <constraint firstItem="Mhg-kj-yeF" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1/10" id="dx4-26-WZV"/>
                 <constraint firstAttribute="trailing" secondItem="b9s-ce-C0v" secondAttribute="trailing" id="ebp-qQ-E2j"/>
                 <constraint firstAttribute="bottom" secondItem="b9s-ce-C0v" secondAttribute="bottom" id="l6Y-x6-gSp"/>
                 <constraint firstItem="b9s-ce-C0v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vPr-cD-R1S"/>
+                <constraint firstItem="Mhg-kj-yeF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="vTv-Ve-wgh"/>
+                <constraint firstAttribute="bottom" secondItem="WvP-DN-Z0d" secondAttribute="bottom" constant="20" id="wfQ-aJ-y8t"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="redo.png" width="512" height="512"/>
+        <image name="undo.png" width="512" height="512"/>
+    </resources>
 </document>

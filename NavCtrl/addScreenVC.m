@@ -98,11 +98,11 @@
         [img drawInRect:CGRectMake(0, 0, 32, 32)];
         
         
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
         
         if (self.dao.companyAdd == YES){
             
-            Company *newCompany = [[Company alloc]initWithCompanyName:self.companyTextField.text downloadLogo:img ticker: self.websiteLabel.text stockPrice: @"Loading..."];
+            Company *newCompany = [[Company alloc]initWithCompanyName:self.companyTextField.text downloadLogo:img ticker: self.websiteTextField.text stockPrice: @"Loading..."];
             
             [self.dao addCompany:newCompany];
         }
@@ -110,7 +110,11 @@
         else if (self.dao.productAdd == YES){
             Product *newProduct = [[Product alloc]initWithProductName:self.companyTextField.text downloadLogo:img];
             [self.companyToEdit.products addObject:newProduct];
+            [self.dao addProduct:newProduct andCompany: self.companyToEdit];
         }
+            
+            
+            
         
         else if (self.dao.companyEdit == YES){
             if (self.companyTextField.text != nil){
@@ -119,7 +123,12 @@
             if(img != nil){
             self.companyToEdit.companyLogo = img;
             }
+            [self.dao editCompany:self.companyToEdit];
         }
+            
+            
+            
+            
         else if (self.dao.productEdit == YES){
             
              if (self.companyTextField.text != nil){
@@ -133,10 +142,11 @@
             if(self.websiteTextField != nil){
                 self.productToEdit.productURL = self.websiteTextField.text;
             }
+//            Company*comp = [self.dao.companyList objectAtIndex:];
             
-            
+            [self.dao editProduct: self.productToEdit andCompany:self.companyToEdit];
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
             self.dao.companyAdd = NO;
             self.dao.productAdd = NO;
             self.dao.companyEdit = NO;
@@ -194,6 +204,8 @@
     [_websiteTextField release];
     [_websiteLabel release];
     [_websiteTextField release];
+    [_companyToEdit release];
+    [_productToEdit release];
     [super dealloc];
 }
 @end

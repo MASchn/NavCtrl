@@ -164,6 +164,7 @@
          addScreenVC *addScreen = [[addScreenVC alloc]init];
          Product *currentProduct = [self.selectedCompany.products objectAtIndex:indexPath.row];
          addScreen.productToEdit = currentProduct;
+         addScreen.companyToEdit = self.selectedCompany;
          [self.navigationController pushViewController: addScreen animated:YES];
          
          return;
@@ -202,6 +203,10 @@
 
 - (void)dealloc {
     [_tableView release];
+    [_products release];
+    [_selectedCompany release];
+    [_addScreen release];
+    
     [super dealloc];
 }
 @end
