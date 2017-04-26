@@ -29,6 +29,7 @@
             
            
             [sharedMyManager fetchCoreData];
+//            [sharedMyManager.managedCompanyList release];
             //Fetchrequest method
             
         }
@@ -114,22 +115,7 @@ Product *surfacePro = [[Product alloc] initWithProductName:@"Surface"
 
 self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, google, microsoft, nil];
     
-    [microsoft release];
-    [apple release];
-    [google release];
-    [samsung release];
-    [surfacePro release];
-    [xps release];
-    [lumia release];
-    [daydream release];
-    [nexus release];
-    [pixel release];
-    [galaxyS7 release];
-    [galaxyTab release];
-    [galaxyNote release];
-    [iPad release];
-    [iPhone release];
-    [iPodTouch release];
+    
     
     for (Company *comp in self.companyList) {
         
@@ -160,11 +146,29 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
 
 
     [self.context save:nil];
+    
+    [microsoft release];
+    [apple release];
+    [google release];
+    [samsung release];
+    [surfacePro release];
+    [xps release];
+    [lumia release];
+    [daydream release];
+    [nexus release];
+    [pixel release];
+    [galaxyS7 release];
+    [galaxyTab release];
+    [galaxyNote release];
+    [iPad release];
+    [iPhone release];
+    [iPodTouch release];
 }
 
 
 -(void) fetchCoreData {
     self.companyList = [[NSMutableArray alloc] init];
+    
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"ManagedCompany"];
     
@@ -174,7 +178,7 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
     
 
     
-    self.managedCompanyList = [NSMutableArray arrayWithArray:results];
+    self.managedCompanyList = [results mutableCopy];
     
 
     
@@ -219,7 +223,7 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
     
 //    NSLog(@"URL: %@",url);
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url];
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc]initWithURL:url] autorelease];
     request.HTTPMethod = @"GET";
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -237,11 +241,11 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
             company.stockPrice = resultsArray[i];
             i++;
         }
-        [request release];
-        [self.stockArray release];
-        [session release];
-        [resultsString release];
-        [resultsArray release];
+//        [request release];
+//        [self.stockArray release];
+//        [session release];
+//        [resultsString release];
+//        [resultsArray release];
         
          dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate didUpdateCompanyStockPrices];
@@ -266,6 +270,7 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
     [self.managedCompanyList addObject:mC];
     
 //    [self.context save:nil];
+    [mC release];
     
 }
 
@@ -340,20 +345,10 @@ self.companyList = [[NSMutableArray alloc]initWithObjects: apple, samsung, googl
     
     mP.company = mC;
     
-//    [self.context save:nil];
     
 }
 
-//
-//@property (retain, nonatomic) NSMutableArray<Company*> *companyList;
-//@property (retain, nonatomic) NSMutableArray *managedCompanyList;
-//@property BOOL companyAdd;
-//@property BOOL productAdd;
-//@property BOOL companyEdit;
-//@property BOOL productEdit;
-//@property (retain, nonatomic) NSMutableArray *stockArray;
-//@property (strong, nonatomic) id<StockPriceDelegate> delegate;
-//@property(nonatomic, strong) NSManagedObjectContext *context;
+
 
 -(void)dealloc {
     [super dealloc];
